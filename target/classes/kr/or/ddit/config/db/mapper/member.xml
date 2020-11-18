@@ -10,18 +10,28 @@
   
   <select id="selectAllMember" resultType="MemberVO">
   	SELECT * FROM users
+  	
   </select>
   
-  <select id="selectMemberPageList" resultType="MemberVO" parameterType="PageVO">
+  <select id="selectMemberPageList" resultType="MemberVO" parameterType="java.util.Map">
 	  select T2.*
 		  from (select rownum as rn, T1.* 
-		  		  from (select * from users order by userid)T1) T2
-	     where T2.rn between (#{page}-1) * #{pageSize} +1 and #{page} * #{pageSize}
+		  		  from (select * from users 
+		  		  
+				  	<if test='search.keyword != null and search.keyword != ""'>
+				  		where ${search.searchType} like '%' || #{search.keyword} || '%'
+				  	</if>
+		  		  
+		  		  order by userid)T1) T2
+	     where T2.rn between (#{page.page}-1) * #{page.pageSize} +1 and #{page.page} * #{page.pageSize}
   </select>
   
-  <select id="selectMemberTotalCnt" resultType="int">
+  <select id="selectMemberTotalCnt" parameterType="SearchVO" resultType="int">
   	select count(*)
   	  from users
+  	<if test='keyword != null and keyword !=""'>
+  		where ${searchType} like '%' || #{keyword} || '%'
+  	</if>
   </select>
   
   <insert id="insertMember" parameterType="MemberVO">

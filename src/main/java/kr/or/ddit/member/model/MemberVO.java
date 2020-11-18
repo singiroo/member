@@ -7,12 +7,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-@XmlRootElement(name = "memberVo")
 public class MemberVO {
 	private String userId;
 	
 	//null이면 안되고, empty면 안됨
-	@NotEmpty
 	private String userNm;
 	
 	private String pass;

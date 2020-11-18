@@ -29,7 +29,7 @@ public class PageVO {
 	
 	public PageVO() {
 		page = 1;
-		pageSize = 8;
+		pageSize = 5;
 	}
 	
 	
