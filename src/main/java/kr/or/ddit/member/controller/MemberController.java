@@ -92,7 +92,8 @@ public class MemberController {
 		
 		int cnt = memberService.insertMember(memberVo);
 		
-		return "redirect:/memberList";
+		
+		return "redirect:/memberView?userid="+memberVo.getUserId();
 	
 	}
 	

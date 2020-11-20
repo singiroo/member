@@ -181,6 +181,17 @@
 			$('#zipcode').val("");
 		}
 		
+		function initdata2(){
+			$('#userId').val("testing");
+			$('#pass').val("java");
+			$('#userNm').val("tester");
+			$('#alias').val("tester");
+			$('#addr1').val("대전 중구 중앙로 76");
+			$('#addr2').val("404호");
+			$('#zipcode').val("34940");
+		}
+
+		
 		
 			 
 		
